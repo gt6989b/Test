@@ -42,9 +42,20 @@ class Board:
         self.sectionSize = 3
         self.data        = [x[:] for x in [[self.blank]*self.size]*self.size]
 
-        allCand = range(1,self.size+1)
+        # construct a list of independent blocks
+        self.blocks \
+            = [[(x,y) for x in self.range] for y in self.range] + \
+              [[(y,x) for x in self.range] for y in self.range]
+
+        for xBase in range(0,self.size,self.sectionSize):
+            for yBase in range(0,self.size,self.sectionSize):
+                self.blocks.append(\
+                    [(x,y) for x in range(xBase,xBase+self.sectionSize) \
+                           for y in range(yBase,yBase+self.sectionSize) ])
+
+        self.allCand = range(1,self.size+1)
         # cannot use [allCand]*3*3 here because that copies references
-        self.candidates  = [[set(allCand) for x in self.range] for y in self.range]
+        self.candidates  = [[set(self.allCand) for x in self.range] for y in self.range]
 
     def ReadFromFile(self, inFile):
         from csv import reader
@@ -75,6 +86,18 @@ def Singles(board):
     return [(row, col, iter(board.candidates[row][col]).next())\
                 for row in board.range for col in board.range \
                     if len(board.candidates[row][col]) == 1]
+
+def OnlyValues(board):
+    candidates = set([])
+    # precompute the memberships
+
+    for block in board.blocks:
+        for value in board.allCand:
+            members = [(row,col) for (row,col) in block \
+                                  if value in board.candidates[row][col]]
+            if len(members) == 1:
+                candidates.add((members[0][0], members[0][1], value))
+    return candidates
 
 def parseCommandLine(argv):
     import argparse
@@ -107,16 +130,23 @@ def main(argv = None):
     if opts.verbose:
         print '%s Solving the board' % str(dt.now())
 
-    inferences = Singles(board)
+    techniques = [Singles, OnlyValues]
+    inferences = 1 # actually a list of tuples, will be over-written
     while inferences:
-	for (row, col, value) in inferences:
-	    board.Set(row = row, col = col, value = value)
-	inferences = Singles(board)
+        for technique in techniques:
+            inferences = technique(board)
+            if inferences:
+                for (row, col, value) in inferences:
+                    board.Set(row = row, col = col, value = value)
+                break # restart techniques from the most basic ones
 
     if opts.outFile:
 	if opts.verbose:
 	    print '%s Writing the board to %s' % (str(dt.now()), opts.outFile.name)
 	opts.outFile.write(str(board))
+    else:
+        print board
+
     return 0
 
 if __name__ == '__main__':
