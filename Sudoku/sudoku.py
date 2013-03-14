@@ -122,13 +122,11 @@ def main(argv = None):
     if opts is None:
         return 0
 
-    if opts.verbose:
-        print '%s Reading the board from %s' % (str(dt.now()), opts.inFile.name)
+    print '%s Reading the board from %s' % (str(dt.now()), opts.inFile.name)
 
     board = Board(opts.inFile)
 
-    if opts.verbose:
-        print '%s Solving the board' % str(dt.now())
+    print '%s Solving the board' % str(dt.now())
 
     techniques = [Singles, OnlyValues]
     inferences = 1 # actually a list of tuples, will be over-written
@@ -141,11 +139,10 @@ def main(argv = None):
                 break # restart techniques from the most basic ones
 
     if opts.outFile:
-	if opts.verbose:
-	    print '%s Writing the board to %s' % (str(dt.now()), opts.outFile.name)
-	opts.outFile.write(str(board))
+        print '%s Writing the board to %s' % (str(dt.now()), opts.outFile.name)
+	opts.outFile.write(str(board)+'\n')
     else:
-        print board
+        print '%s Displaying the board\n%s\n' % (str(dt.now()), str(board))
 
     return 0
 
