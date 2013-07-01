@@ -10,8 +10,9 @@
 ##----------------------------------------------------------------------------##
 
 # import now - to make help screen quicker...
-from datetime import datetime as dt
-import os, sys
+from datetime    import datetime as dt
+from collections import Counter
+import sys
 
 def computeExcludedSection(idx, size):
     start = (idx/size)*size  # integer arithmetic
@@ -29,7 +30,8 @@ class Board:
         self.ReadFromFile(inFile)
 
     def __str__(self):
-        return '\n'.join([','.join([str(elt) for elt in row]) for row in self.data])
+        return '\n'.join([','.join([str(elt) for elt in row]) \
+                          for row in self.data])
 
     def Dump(self):
 	return str(self) + '\n-------------\nCANDIDATES\n----------------\n' \
@@ -55,7 +57,8 @@ class Board:
 
         self.allCand = range(1,self.size+1)
         # cannot use [allCand]*3*3 here because that copies references
-        self.candidates  = [[set(self.allCand) for x in self.range] for y in self.range]
+        self.candidates  = [[set(self.allCand) for x in self.range] \
+                            for y in self.range]
 
     def ReadFromFile(self, inFile):
         from csv import reader
@@ -82,10 +85,27 @@ class Board:
         for (rowIdx, colIdx) in updateSet:
             self.candidates[rowIdx][colIdx].discard(value)
 
+    def UnSetPairs(self, pairValueList):
+        return None
+
+## \brief Fill in last remaining candidates for each field.
+##
+## \param[in]  board  Board for which to produce fill candidates.
+## \return     Array of triples (row, column, value to fill)
+
 def Singles(board):
     return [(row, col, iter(board.candidates[row][col]).next())\
                 for row in board.range for col in board.range \
                     if len(board.candidates[row][col]) == 1]
+
+## \brief Fill in the only values remaining in the block.
+##
+## For example, if there is only one place in some row (or column or square),
+## where you can put a 5 -- put it there. The check is for each value for each
+## block.
+##
+## \param[in]  board  Board for which to produce fill candidates.
+## \return     Array of triples (row, column, value to fill)
 
 def OnlyValues(board):
     candidates = set([])
@@ -98,6 +118,24 @@ def OnlyValues(board):
             if len(members) == 1:
                 candidates.add((members[0][0], members[0][1], value))
     return candidates
+
+## \brief Remove candidates from other lists if identical pairs of candidates
+##        are present in some block.
+##
+## For example, if the possibilities for squares (1,7) and (1,9) are {3,4},
+## then one of those must be 3 and another must be 4, so both 3 and 4 should be
+## eliminated from candidate lists of all other squares in the first row and in
+## the third horizontal square-block.
+##
+## \param[in]  board  Board for which to produce fill candidates.
+## \return     Array of triples (row, column, value to fill)
+
+def EliminateCandidatesFromPair(board):
+    pairs = set([])
+    for block in board.blocks:
+        count = Counter([board.candidates[row][col] for row,col in block])
+
+    return pairs
 
 def parseCommandLine(argv):
     import argparse
