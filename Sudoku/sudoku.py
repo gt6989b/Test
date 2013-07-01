@@ -11,7 +11,6 @@
 
 # import now - to make help screen quicker...
 from datetime    import datetime as dt
-from collections import Counter
 import sys
 
 def computeExcludedSection(idx, size):
@@ -34,9 +33,12 @@ class Board:
                           for row in self.data])
 
     def Dump(self):
-	return str(self) + '\n-------------\nCANDIDATES\n----------------\n' \
-	  + '\n'.join([','.join([str(x) for x in col]) \
-		            for row in self.candidates for col in row])
+        return str(self) \
+               + '\n-------------\nCANDIDATES\n----------------\n' \
+               + '\n'.join([str(i) + ',' + str(j) + ': ' \
+                           +','.join([str(x) for x in self.candidates[i][j]]) \
+                                for i in self.range for j in self.range \
+                                if self.candidates[i][j]])
 
     def Init(self):
         self.size        = 9
@@ -60,6 +62,9 @@ class Board:
         self.candidates  = [[set(self.allCand) for x in self.range] \
                             for y in self.range]
 
+    def NotSolved(self):
+        return any(cand for candRow in self.candidates for cand in candRow)
+
     def ReadFromFile(self, inFile):
         from csv import reader
 
@@ -68,7 +73,7 @@ class Board:
             [self.Set(row   = rowIdx,
                       col   = colIdx,
                       value = int(row[colIdx])) for colIdx in range(len(row)) \
-		                                if  row[colIdx]]
+                                        if  row[colIdx]]
             rowIdx += 1
 
     def Set(self, row, col, value):
@@ -131,11 +136,41 @@ def OnlyValues(board):
 ## \return     Array of triples (row, column, value to fill)
 
 def EliminateCandidatesFromPair(board):
-    pairs = set([])
-    for block in board.blocks:
-        count = Counter([board.candidates[row][col] for row,col in block])
+    candIdx2 = [(row,col,board.candidates[row][col]) \
+                              for row in board.range for col in board.range \
+                              if len(board.candidates[row][col]) == 2]
 
-    return pairs
+    pairs = dict()
+    for (row, col, candSet) in candIdx2:
+        candList = list(candSet)
+        candPair = (candList[0], candList[1])
+        if candPair in pairs:
+            pairs[candPair].append((row,col))
+        else:
+            pairs[candPair] = [(row,col)]
+
+    # get the final list of objects to trim candidates to
+    delList = [(idxList, candPair[0], candPair[1]) \
+                   for candPair, idxList in pairs.iteritems() \
+                   if  len(idxList) > 1]
+
+    trimmedCandLists = False
+    for (idxList, value0, value1) in delList:
+        maxL = len(idxList)
+        pairList = [(i,j) for i in range(maxL) for j in range(i+1,maxL)]
+        for (i,j) in pairList:
+            blockList = [blk for blk in board.blocks \
+                                 if idxList[i] in blk and idxList[j] in blk]
+            for block in blockList:
+                for point in block:
+                    if point not in [idxList[i], idxList[j]]:
+                        candList = board.candidates[point[0]][point[1]]
+                        if value0 in candList or value1 in candList:
+                            trimmedCandLists = True
+                            candList.discard(value0)
+                            candList.discard(value1)
+
+    return trimmedCandLists
 
 def parseCommandLine(argv):
     import argparse
@@ -160,11 +195,11 @@ def main(argv = None):
     if opts is None:
         return 0
 
-    print '%s Reading the board from %s' % (str(dt.now()), opts.inFile.name)
+    print dt.now(), 'Reading the board from', opts.inFile.name
 
     board = Board(opts.inFile)
 
-    print '%s Solving the board' % str(dt.now())
+    print dt.now(), 'Solving the board'
 
     techniques = [Singles, OnlyValues]
     inferences = 1 # actually a list of tuples, will be over-written
@@ -175,12 +210,18 @@ def main(argv = None):
                 for (row, col, value) in inferences:
                     board.Set(row = row, col = col, value = value)
                 break # restart techniques from the most basic ones
+        if (not inferences) and EliminateCandidatesFromPair(board):
+            inferences = 1 # actually a list of tuples, will be over-written
 
-    if opts.outFile:
-        print '%s Writing the board to %s' % (str(dt.now()), opts.outFile.name)
-	opts.outFile.write(str(board)+'\n')
+    if board.NotSolved():
+        print dt.now(), "Didn't solve completely, last set\n%s\n" % board.Dump()
     else:
-        print '%s Displaying the board\n%s\n' % (str(dt.now()), str(board))
+        print dt.now(), 'Solved completely.'
+        if opts.outFile:
+            print dt.now(), 'Writing the board to', opts.outFile.name
+            opts.outFile.write(str(board)+'\n')
+        else:
+            print dt.now(), 'Displaying the board\n%s\n' % board
 
     return 0
 
