@@ -10,8 +10,9 @@
 ##----------------------------------------------------------------------------##
 
 # import now - to make help screen quicker...
-from datetime import datetime as dt
-import os, sys
+from datetime    import datetime as dt
+from collections import Counter
+import sys
 
 def computeExcludedSection(idx, size):
     start = (idx/size)*size  # integer arithmetic
@@ -84,6 +85,9 @@ class Board:
         for (rowIdx, colIdx) in updateSet:
             self.candidates[rowIdx][colIdx].discard(value)
 
+    def UnSetPairs(self, pairValueList):
+        return None
+
 ## \brief Fill in last remaining candidates for each field.
 ##
 ## \param[in]  board  Board for which to produce fill candidates.
@@ -128,6 +132,9 @@ def OnlyValues(board):
 
 def EliminateCandidatesFromPair(board):
     pairs = set([])
+    for block in board.blocks:
+        count = Counter([board.candidates[row][col] for row,col in block])
+
     return pairs
 
 def parseCommandLine(argv):
