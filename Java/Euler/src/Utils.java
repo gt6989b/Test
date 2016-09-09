@@ -36,3 +36,11 @@ class Primes
         return primes;
     }
 }
+
+class Progressions
+{
+    static int arithmeticSum(int numTerms, int stepSize)
+    {
+        return stepSize * numTerms * (numTerms + 1) / 2;
+    }
+}
