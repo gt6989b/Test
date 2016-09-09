@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50a48ca9-f56c-4d8b-80c9-8a6b18cc072d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Utils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EulerProb4.java" afterPath="$PROJECT_DIR$/src/EulerProb4.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/EulerProb3.java" afterPath="$PROJECT_DIR$/src/EulerProb3.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
     </list>
     <ignored path="Euler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,26 +28,25 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
-                  <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-                  <folding />
+                <state relative-caret-position="425">
+                  <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+                  <folding>
+                    <element signature="method#main#0;class#Main#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EulerProb4.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/EulerProb4.java">
+          <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Utils.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="850">
-                  <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+                <state relative-caret-position="272">
+                  <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
                   <folding>
-                    <element signature="docComment;field#max#0;class#EulerProb4#0" expanded="true" />
-                    <element signature="docComment;method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
-                    <element signature="method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
-                    <element signature="method#run#0;class#EulerProb4#0" expanded="true" />
+                    <element signature="imports" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -54,40 +55,15 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="EulerProb1.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/EulerProb1.java">
+        <leaf>
+          <file leaf-file-name="EulerProb7.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/EulerProb7.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
                   <folding>
-                    <element signature="method#EulerProb1#0;class#EulerProb1#0" expanded="false" />
-                    <element signature="method#arithmeticSum#0;class#EulerProb1#0" expanded="false" />
-                    <element signature="method#run#0;class#EulerProb1#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EulerProb2.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/EulerProb2.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EulerProb3.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/EulerProb3.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="348">
-                  <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="method#EulerProb3#0;class#EulerProb3#0" expanded="true" />
-                    <element signature="method#sieve#0;class#EulerProb3#0" expanded="true" />
+                    <element signature="docComment;field#maxPrime#0;class#EulerProb7#0" expanded="true" />
+                    <element signature="method#EulerProb7#0;class#EulerProb7#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -111,9 +87,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/EulerProb2.java" />
         <option value="$PROJECT_DIR$/src/EulerProb1.java" />
-        <option value="$PROJECT_DIR$/src/EulerProb3.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/EulerProb4.java" />
+        <option value="$PROJECT_DIR$/src/EulerProb5.java" />
+        <option value="$PROJECT_DIR$/src/Utils.java" />
+        <option value="$PROJECT_DIR$/src/EulerProb3.java" />
+        <option value="$PROJECT_DIR$/src/EulerProb7.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -524,7 +503,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/EulerProb3.java</url>
-          <line>45</line>
+          <line>16</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
@@ -542,7 +521,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#main#0;class#Main#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -571,9 +552,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#EulerProb3#0;class#EulerProb3#0" expanded="true" />
-            <element signature="method#sieve#0;class#EulerProb3#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -582,7 +561,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-          <folding />
+          <folding>
+            <element signature="method#main#0;class#Main#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,14 +599,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EulerProb3.java">
+    <entry file="file://$PROJECT_DIR$/src/EulerProb4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
+        <state relative-caret-position="850">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#EulerProb3#0;class#EulerProb3#0" expanded="true" />
-            <element signature="method#sieve#0;class#EulerProb3#0" expanded="true" />
+            <element signature="docComment;field#max#0;class#EulerProb4#0" expanded="true" />
+            <element signature="docComment;method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
+            <element signature="method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
+            <element signature="method#run#0;class#EulerProb4#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -638,23 +620,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/EulerProb5.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        <state relative-caret-position="68">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EulerProb4.java">
+    <entry file="file://$PROJECT_DIR$/src/EulerProb3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="16" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
-            <element signature="docComment;field#max#0;class#EulerProb4#0" expanded="true" />
-            <element signature="docComment;method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
-            <element signature="method#isPalindrome#0;class#EulerProb4#0" expanded="true" />
-            <element signature="method#run#0;class#EulerProb4#0" expanded="true" />
+            <element signature="method#EulerProb3#0;class#EulerProb3#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EulerProb7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;field#maxPrime#0;class#EulerProb7#0" expanded="true" />
+            <element signature="method#EulerProb7#0;class#EulerProb7#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="method#main#0;class#Main#0" expanded="true" />
           </folding>
         </state>
       </provider>
