@@ -9,12 +9,13 @@ public class Main
     {
         System.out.println("Solving Euler Project Problems");
 
-        int numProblems = 3;
+        int numProblems = 4;
 
         Functor [] problemArray = new Functor[numProblems];
         problemArray[0] = new EulerProb1(999);
         problemArray[1] = new EulerProb2(4000000);
         problemArray[2] = new EulerProb3(600851475143L);
+        problemArray[3] = new EulerProb4(600851475143L);
 
         for (int i = 0; i < numProblems; ++i)
             System.out.println("Problem " + i + ": " + problemArray[i].run());
