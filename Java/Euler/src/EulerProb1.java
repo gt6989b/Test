@@ -1,4 +1,4 @@
-class EulerProb1 extends Functor
+class EulerProb1 implements Functor
 {
     /**
      * If we list all the natural numbers below 10 that are multiples of 3 or

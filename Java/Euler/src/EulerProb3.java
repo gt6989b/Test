@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class EulerProb3 extends Functor
+class EulerProb3 implements Functor
 {
     /**
      * The prime factors of 13195 are 5, 7, 13 and 29.
@@ -19,7 +19,7 @@ class EulerProb3 extends Functor
             if (this.max % primes.get(primeIndex) == 0)
                 break;
 
-        Long answer= (primeIndex >= 0) ? primes.get(primeIndex) : this.max;
+        Long answer = (primeIndex >= 0) ? primes.get(primeIndex) : this.max;
         return answer.toString();
     }
 }

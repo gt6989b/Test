@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
-class EulerProb4 extends Functor
+class EulerProb4 implements Functor
 {
     /**
      * A palindromic number reads the same both ways. The largest palindrome

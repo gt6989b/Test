@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.stream.LongStream;
 
-abstract class Functor
+interface Functor
 {
-    public abstract String run();
+    String run();
 }
 
 class Primes

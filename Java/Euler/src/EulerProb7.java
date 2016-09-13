@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class EulerProb7 extends Functor
+class EulerProb7 implements Functor
 {
     /**
      * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can
